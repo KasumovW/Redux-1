@@ -14,7 +14,10 @@ const reduser = (state = 0, action) => {
             return (state - 1)
         };
 
+    } if (action.type === "Зубайра3") {
+        return (state = 0);
     } return (state);
+
 
 };
 
