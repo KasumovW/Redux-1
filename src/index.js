@@ -3,27 +3,21 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {Provider} from "react-redux";
 import {createStore} from "redux";
+import './style.css';
 
 const reduser = (state = 0, action) => {
-    if (action.type === "Зубайра") {
-        if (state < 10) {
-            return (state + 1)
-        };
-    } if (action.type === "Зубайра2") {
-        if (state > 0) {
-            return (state - 1)
-        };
-
-    } if (action.type === "Зубайра3") {
-        return (state = 0);
-    } return (state);
-
-
-};
-
+    switch (action.type) {
+        case 5:
+            return state + action.number;
+        case 'Зубайра':
+            return state + 1;
+        case 'Зубайра2':
+            return state - 1;
+        default:
+            return state;
+    }
+}
 const store = createStore(reduser);
-
-
 
 ReactDOM.render(
     <Provider store={store}>
