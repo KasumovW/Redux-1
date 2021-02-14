@@ -1,0 +1,39 @@
+.logo {
+    font-size: 30px;
+}
+
+.null {
+    font-size: 350px;
+    text-align: center;
+}
+
+.ggg {
+    max-width: 720px;
+}
+
+.zzz {
+    margin-left: 50px;
+}
+
+.btn {
+    width: 126px;
+}
+
+.ccc {
+    margin-top: 185px;
+}
+
+.back {
+    width: 100%;
+    background-color: grey;
+    height: 39px;
+    color: white;
+    text-align: center;
+}
+
+.mmm {
+    width: 100%;
+    background-color: orange;
+    height: 50px;
+    color: white;
+}

@@ -15,20 +15,20 @@ function App() {
     const handleAdd = () => {
         dispach(addNumber(chislo))
     }
-  return (
-    <div className='golova'>
-        <div>{Conclusion}</div>
-        <button onClick={handlePlus}>Плюс</button>
-        <button onClick={handleMinus}>Минус</button>
-        <input
-            type='number'
-            placeholder='Введите число...'
-            value={chislo}
-            onChange={(event) => setChislo(event.target.value)}
-        />
-        <button onClick={handleAdd}>Добавить число</button>
-    </div>
-  );
+    return (
+        <div className='golova'>
+            <div>{Conclusion}</div>
+            <button onClick={handlePlus}>Плюс</button>
+            <button onClick={handleMinus}>Минус</button>
+            <input
+                type='number'
+                placeholder='Введите число...'
+                value={chislo}
+                onChange={(event) => setChislo(event.target.value)}
+            />
+            <button onClick={handleAdd}>Добавить число</button>
+        </div>
+    );
 }
 
 export default App;

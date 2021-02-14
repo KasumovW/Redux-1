@@ -8,7 +8,7 @@ import './style.css';
 const reduser = (state = 0, action) => {
     switch (action.type) {
         case 5:
-            return state + action.number;
+            return state + Number(action.number);
         case 'Зубайра':
             return state + 1;
         case 'Зубайра2':
@@ -23,5 +23,5 @@ ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
-  document.getElementById('root')
+    document.getElementById('root')
 );
