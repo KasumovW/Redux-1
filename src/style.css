@@ -1,39 +1,18 @@
-.logo {
-    font-size: 30px;
+.cText {
+    font-size: 60px;
 }
 
-.null {
-    font-size: 350px;
+.mText {
+    font-size: 45px;
+    display: flex;
+}
+
+.todo {
+    font-size: 40px;
     text-align: center;
+    margin: auto;
 }
 
-.ggg {
-    max-width: 720px;
-}
-
-.zzz {
-    margin-left: 50px;
-}
-
-.btn {
-    width: 126px;
-}
-
-.ccc {
-    margin-top: 185px;
-}
-
-.back {
-    width: 100%;
-    background-color: grey;
-    height: 39px;
-    color: white;
-    text-align: center;
-}
-
-.mmm {
-    width: 100%;
-    background-color: orange;
-    height: 50px;
-    color: white;
+.m2Text {
+    font-size: 40px;
 }
