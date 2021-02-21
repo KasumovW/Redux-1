@@ -1,47 +1,68 @@
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {gettingData} from "./actions";
 import {useEffect} from "react";
 
-
 function App() {
-   const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
 
-    useEffect(() =>{
-        fetch('https://jsonplaceholder.typicode.com/todos')
-            .then((response) => {
-               return  response.json()
-            })
-            .then((arr) => {
-                setData(arr)
-                setLoading(false)
-            })
-    }, [])
+const data = useSelector(state => state.data);
+const load = useSelector(state => state.loading);
+const dispach = useDispatch();
 
-    return (
+useEffect(() => {
+    dispach(gettingData());
+}, []);
+
+
+
+return (
         <div className='golova'>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-12 text-center cText'>
-                        Список дел:
+            {load ? (
+                <div className='container'>
+                    <div className="row mt-3">
+                        <div className="col-12 m-auto text-center header">
+                            Загрузка данных...
+                        </div>
                     </div>
-                    {loading ? (
-                        <div className='col-12 mt-5 text-center m2Text'>Идет загрузка данных с сервера...</div>
-                    ) : data.map((item) => {
-                            if (item.completed === true) {
-                                return (
-                                    <div className='col-12 mText'>
-                                        <div className='id'>
-                                            Дело-{item.id}:
-                                        </div>
-                                        <div className='todo'>
-                                            {item.title}
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        }) }
+                    <div className="row justify-content-between mt-4">
+                        <div className="col-8 main text-center">Идет загрузка...</div>
+                        <div className="col-3 sidebar text-center">И тут тоже...</div>
+                    </div>
+                    <div className="row mt-4 mb-3">
+                        <div className="col-12 footer text-center">
+                            И тут...
+                        </div>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className='container'>
+                    <div className="row mt-3">
+                        <div className="col-12 m-auto text-center header">
+                            Header
+                        </div>
+                    </div>
+                    <div className="row justify-content-between mt-4">
+                        <div className="col-8 main text-center">
+                            {data.map((item) => {
+                                if (item.id < 20) {
+                                    return item.body
+                                } return false;
+                            })}
+                        </div>
+                        <div className="col-3 sidebar text-center">
+                            {data.map((item) => {
+                                if (item.id < 25) {
+                                    return item.title
+                                } return false;
+                            })}
+                        </div>
+                    </div>
+                    <div className="row mt-4 mb-3">
+                        <div className="col-12 footer text-center">
+                            Все!
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
