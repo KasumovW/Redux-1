@@ -6,7 +6,7 @@ function MainImg(props) {
             <div className="row">
                 <div className="col-12 mt-3 mainImg">
                     <div className="col-4 img">
-                        Image
+                        Image1
                     </div>
                 </div>
             </div>
