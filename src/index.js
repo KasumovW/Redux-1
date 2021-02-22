@@ -8,26 +8,25 @@ import thunk from "redux-thunk";
 
 const iState = {
     data: [],
-    loading: false,
+    loading: false
 };
-
 const reducer = (state = iState, action) => {
     switch (action.type) {
-        case 'a1':
+        case 'addData':
+            return {
+                data: action.payload
+            }
+
+        case 'load':
             return {
                 loading: true
             }
-
-        case 'asd':
-            return {
-                data: action.payload
-            };
 
         default:
             return state;
     }
 }
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
     <Provider store={store}>

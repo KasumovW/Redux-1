@@ -1,13 +1,15 @@
-export const gettingData = (dispach) => {
-    return function (dispach) {
-        dispach({type: 'a1'})
-        fetch('https://jsonplaceholder.typicode.com/posts')
+export const addData = () => {
+    return (dispach) => {
+        dispach({
+            type: 'load'
+        })
+        fetch('https://jsonplaceholder.typicode.com/comments?_limit=50')
             .then(response => response.json())
             .then(json => {
                 dispach({
-                    type:"asd",
+                    type: "addData",
                     payload: json
                 })
             })
     }
-};
+}
