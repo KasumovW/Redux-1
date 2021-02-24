@@ -15,12 +15,19 @@ const reducer = (state = iState, action) => {
         case 'addData':
             return {
                 data: action.payload
-            }
+            };
+
+        case 'delete':
+            return {
+                data: state.data.filter((item) => {
+                    return item.id !== action.payload;
+                })
+            };
 
         case 'load':
             return {
                 loading: true
-            }
+            };
 
         default:
             return state;
