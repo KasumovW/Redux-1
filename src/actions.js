@@ -16,7 +16,7 @@ export const addData = () => {
 
 export const dataRemove = (id) => {
     return (dispatch) => {
-        fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50${id}`, {
+        fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50/${id}`, {
             method: 'DELETE'
         })
             .then((response) => response.json())
@@ -30,19 +30,19 @@ export const dataRemove = (id) => {
 
 };
 
-export const checkUse = (id, completed) => {
+export const createCheck = (id, completed) => {
     return (dispatch) => {
-        fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50${id}`, {
-            method: 'PATCH',
+        fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50/${id}`,{
+            method: "PATCH",
             body: JSON.stringify({completed: !completed}),
-            headers: {"content-type": "application/json"}
+            headers: {"Content-type": "application/json"}
         })
             .then((response) => response.json())
-            .then(json => {
+            .then(() => {
                 dispatch({
-                    type: 'create',
+                    type: "check",
                     payload: id
                 })
             })
     }
-}
+};

@@ -29,18 +29,19 @@ const reducer = (state = iState, action) => {
                 loading: true
             };
 
-        case 'create': {
+        case 'check':
             return {
                 data: state.data.map((item) => {
                     if (item.id === action.payload) {
-                        return{
+                        return {
                             ...item,
                             completed: !item.completed
                         }
-                    } return item;
+                    }
+
+                    return item;
                 })
-            }
-        }
+            };
 
         default:
             return state;
