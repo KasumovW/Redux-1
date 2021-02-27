@@ -1,51 +1,50 @@
 export const addData = () => {
-    return (dispatch) => {
-        dispatch({
-            type: 'load'
-        })
-        fetch('https://jsonplaceholder.typicode.com/todos?_limit=50')
-            .then(response => response.json())
+    return function (dispatch) {
+        dispatch({ type: "loading"})
+        fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
+            .then((response) => response.json())
             .then(json => {
                 dispatch({
-                    type: "addData",
+                    type: 'add',
                     payload: json
                 })
             })
+
     }
 };
 
-export const dataRemove = (id) => {
-    return (dispatch) => {
-        dispatch({type: 'spining_delete', payload: id})
-        fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50/${id}`, {
-            method: 'DELETE'
+export const dataDelete = (id) => {
+    return function (dispatch) {
+        dispatch({type: "todo_deleting_disabled", payload: id})
+        fetch("https://jsonplaceholder.typicode.com/todos?_limit=10", {
+            method: "DELETE"
         })
             .then((response) => response.json())
             .then(json => {
                 dispatch({
-                    type: 'delete',
+                    type: 'todo_deleting',
                     payload: id
                 })
-        })
+            })
     }
+}
 
-};
+export const dataCheck = (id, completed) => {
+    return function (dispatch) {
+        dispatch({type: "check_disabled", payload: id})
 
-export const createCheck = (id, completed) => {
-    return (dispatch) => {
-        dispatch({type:'chek_spin', payload: id})
-
-        fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50/${id}`,{
+        fetch("https://jsonplaceholder.typicode.com/todos?_limit=10", {
             method: "PATCH",
             body: JSON.stringify({completed: !completed}),
-            headers: {"Content-type": "application/json"}
+            headers: {"content-type": "application/json"}
         })
             .then((response) => response.json())
             .then(() => {
                 dispatch({
-                    type: "check",
+                    type: 'todo_checking',
                     payload: id
                 })
             })
+
     }
-};
+}

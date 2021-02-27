@@ -3,10 +3,10 @@ import React from 'react';
 function Header(props) {
     return (
         <div>
-            <div className="row justify-content-center text-center mt-3">
-                <div className="col-3 time">22.02.2021</div>
-                <div className="col-3 home">HOME</div>
-                <div className="col-3 time">20:36</div>
+            <div className="row">
+                <div className="col-12 m-auto text-center pb-3 pt-3 todolist">
+                    Todolist
+                </div>
             </div>
         </div>
     );

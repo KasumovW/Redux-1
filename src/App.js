@@ -1,34 +1,29 @@
+import Header from "./Header";
+import Main from "./Main";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import Header from "./Header";
-import MainImg from "./MainImg";
-import Forum from "./Forum";
 import {addData} from "./actions";
 import HeaderA from "./HeaderA";
-import MainImgA from "./MainImgA";
-import ForumA from "./ForumA";
+import MainA from "./MainA";
 
 function App() {
-    const data = useSelector(state => state.data);
-    const loading = useSelector(state => state.loading);
-    const dispach = useDispatch();
+    const loading = useSelector((state) => state.loading);
+    const dispatch = useDispatch();
     useEffect(() => {
-        dispach(addData());
-    }, []);
+        dispatch(addData())
+    }, [])
 
     return (
-        <div className='container'>
+        <div className='container obsh'>
             {loading ? (
                 <>
-                <HeaderA/>
-                <MainImgA/>
-                <ForumA/>
+                    <HeaderA />
+                    <MainA />
                 </>
             ) : (
                 <>
-                <Header/>
-                <MainImg/>
-                <Forum/>
+                    <Header />
+                    <Main />
                 </>
             )}
         </div>

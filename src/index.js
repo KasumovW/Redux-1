@@ -9,72 +9,72 @@ import thunk from "redux-thunk";
 const iState = {
     data: [],
     loading: false
-};
-const reducer = (state = iState, action) => {
+}
+const reduser = (state = iState, action) => {
     switch (action.type) {
-        case 'addData':
+        case "loading":
             return {
-                data: action.payload
-            };
+                ...state,
+                loading: true
+            }
 
-        case 'spining_delete':
+        case "add":
+            return  {
+            data: action.payload
+        }
+
+        case "todo_deleting_disabled":
             return {
                 data: state.data.map((item) => {
                     if (item.id === action.payload) {
                         return{
                             ...item,
-                            spin: true
+                            deleting: true
                         }
                     } return item
-
                 })
             }
 
-        case 'delete':
+        case "todo_deleting":
             return {
                 data: state.data.filter((item) => {
                     return item.id !== action.payload;
                 })
-            };
-
-        case 'load':
-            return {
-                loading: true
-            };
-
-        case 'chek_spin':
-            return {
-                data: state.data.map((item) => {
-                    if (item.id === action.payload) {
-                        return{
-                            ...item,
-                            cheking: true
-                        }
-                    } return item
-                })
             }
 
-        case 'check':
+        case "check_disabled":
             return {
                 data: state.data.map((item) => {
                     if (item.id === action.payload) {
                         return {
                             ...item,
-                            completed: !item.completed,
-                            cheking: false
-
+                            checking: true
                         }
-                    }
+                    } return item
 
-                    return item;
                 })
-            };
+            }
+
+        case  "todo_checking":
+            return {
+                data: state.data.map((item) => {
+                    if (item.id === action.payload) {
+                        return {
+                            ...item,
+                            check: !item.completed,
+                            checking: false
+                        }
+                    } return item;
+
+                })
+            }
+
 
         default:
             return state;
     }
 }
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reduser, applyMiddleware(thunk))
 
 ReactDOM.render(
     <Provider store={store}>

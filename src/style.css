@@ -1,62 +1,51 @@
-.home {
-    font-size: 35px;
+.todolist {
     font-weight: bold;
-    color: grey;
+    font-size: 26px;
+    background-color: blanchedalmond;
+    color: brown;
+    border-radius: 15px;
+    border: 10px double red;
 }
 
-.time {
-    font-size: 20px;
-    font-weight: bold;
-    color: grey;
+.obsh {
+    max-width: 720px;
 }
 
-.mainImg{
-    background-color: grey;
-    width: 800px;
-    height: 600px;
-    margin: auto;
-}
-
-.img {
-    color: white;
-    font-size: 100px;
-    font-weight: bold;
-    text-align: center;
-    margin: auto;
-    padding-top: 200px;
-}
-
-.forum {
-    background-color: grey;
-    margin: auto;
-    color: white;
+.todo {
+    background-color: blanchedalmond;
     border-radius: 5px;
+    height: 50px;
+    max-height: 50px;
+    border: 3px solid red;
 }
 
-.X {
+.check {
+    margin-top: 15px;
+}
+
+input {
+    width: 15px;
+    height: 15px;
     cursor: pointer;
-    text-align: center;
-    border: solid;
-}
-.X:hover {
-    box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
 
-.textName {
-    font-size: 20px;
+.line {
+    width: 1px;
+    height: 16px;
+    max-height: 50px;
+    background-color: black;
+    margin-left: 3px;
 }
 
-.mail {
-    font-size: 22px;
-    padding-top: 5px;
+.text {
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 6px;
 }
 
-.id {
-    font-size: 22px;
-    padding-top: 5px;
-}
-
-.name {
-    margin: auto;
-    padding-bottom: 15px;
+button {
+    border-radius: 6px;
+    border: none;
+    margin-top: 8px;
+    background-color: white;
 }
