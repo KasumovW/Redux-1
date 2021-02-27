@@ -21,14 +21,20 @@ function Forum(props) {
                             <div className="row justify-content-around textName pt-2 text-center m-auto">
                                 <div className="col-1 mail">{item.id}</div>
                                 <div className="col-3 id">{item.title}</div>
-                                <div className="col-auto X" onClick={() => handleDelete(item.id)}>X</div>
+                                <button className="col-auto X"
+                                     onClick={() => handleDelete(item.id)}
+                                     disabled={item.spin}
+                                >X</button>
                             </div>
                             <div className="row">
                                 <div className="col-6 text-center name m-auto">
-                                    <input
-                                        type="checkbox"
-                                        checked={item.completed}
-                                        onChange={() => handleCheck(item.id)}/>
+                                    {item.cheking ? '-' : (
+                                        <input
+                                            type="checkbox"
+                                            checked={item.completed}
+                                            onChange={() => handleCheck(item.id)}
+                                        />
+                                    )}
                                 </div>
                             </div>
                         </div>

@@ -17,6 +17,19 @@ const reducer = (state = iState, action) => {
                 data: action.payload
             };
 
+        case 'spining_delete':
+            return {
+                data: state.data.map((item) => {
+                    if (item.id === action.payload) {
+                        return{
+                            ...item,
+                            spin: true
+                        }
+                    } return item
+
+                })
+            }
+
         case 'delete':
             return {
                 data: state.data.filter((item) => {
@@ -29,13 +42,27 @@ const reducer = (state = iState, action) => {
                 loading: true
             };
 
+        case 'chek_spin':
+            return {
+                data: state.data.map((item) => {
+                    if (item.id === action.payload) {
+                        return{
+                            ...item,
+                            cheking: true
+                        }
+                    } return item
+                })
+            }
+
         case 'check':
             return {
                 data: state.data.map((item) => {
                     if (item.id === action.payload) {
                         return {
                             ...item,
-                            completed: !item.completed
+                            completed: !item.completed,
+                            cheking: false
+
                         }
                     }
 

@@ -16,6 +16,7 @@ export const addData = () => {
 
 export const dataRemove = (id) => {
     return (dispatch) => {
+        dispatch({type: 'spining_delete', payload: id})
         fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50/${id}`, {
             method: 'DELETE'
         })
@@ -32,6 +33,8 @@ export const dataRemove = (id) => {
 
 export const createCheck = (id, completed) => {
     return (dispatch) => {
+        dispatch({type:'chek_spin', payload: id})
+
         fetch(`https://jsonplaceholder.typicode.com/comments?_limit=50/${id}`,{
             method: "PATCH",
             body: JSON.stringify({completed: !completed}),
