@@ -1,11 +1,11 @@
 export const addData = () => {
     return function (dispatch) {
-        dispatch({ type: "loading"})
+        dispatch({ type:"app/loading/start"})
         fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
             .then((response) => response.json())
             .then(json => {
                 dispatch({
-                    type: 'add',
+                    type: 'app/loading/success',
                     payload: json
                 })
             })
@@ -15,14 +15,14 @@ export const addData = () => {
 
 export const dataDelete = (id) => {
     return function (dispatch) {
-        dispatch({type: "todo_deleting_disabled", payload: id})
+        dispatch({type: "todo/deleting/start", payload: id})
         fetch("https://jsonplaceholder.typicode.com/todos?_limit=10", {
             method: "DELETE"
         })
             .then((response) => response.json())
             .then(json => {
                 dispatch({
-                    type: 'todo_deleting',
+                    type: 'todo/deleting/success',
                     payload: id
                 })
             })
@@ -31,7 +31,7 @@ export const dataDelete = (id) => {
 
 export const dataCheck = (id, completed) => {
     return function (dispatch) {
-        dispatch({type: "check_disabled", payload: id})
+        dispatch({type: "todo/check/start", payload: id})
 
         fetch("https://jsonplaceholder.typicode.com/todos?_limit=10", {
             method: "PATCH",
@@ -41,7 +41,7 @@ export const dataCheck = (id, completed) => {
             .then((response) => response.json())
             .then(() => {
                 dispatch({
-                    type: 'todo_checking',
+                    type: 'todo/check/success',
                     payload: id
                 })
             })
