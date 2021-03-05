@@ -1,6 +1,9 @@
 const iState = {
     data: [],
-    loading: false
+    loading: false,
+
+    users: [],
+    usersLoading: false
 }
 const reduser = (state = iState, action) => {
     switch (action.type) {
@@ -60,6 +63,19 @@ const reduser = (state = iState, action) => {
                     } return item;
 
                 })
+            }
+
+        case "user/load/start":
+            return {
+                ...state,
+                usersLoading: true
+            }
+
+        case "user/load/success":
+            return {
+                ...state,
+                usersLoading: false,
+                users: action.payload
             }
 
 

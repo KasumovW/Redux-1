@@ -20,7 +20,7 @@ export const dataDelete = (id) => {
             method: "DELETE"
         })
             .then((response) => response.json())
-            .then(json => {
+            .then(() => {
                 dispatch({
                     type: 'todo/deleting/success',
                     payload: id
@@ -48,3 +48,19 @@ export const dataCheck = (id, completed) => {
 
     }
 }
+
+export const userData = () => {
+    return function (dispatch) {
+        dispatch({type: "user/load/start"})
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then((response) => response.json())
+            .then((json) => {
+                dispatch({
+                    type: "user/load/success",
+                    payload: json
+                })
+            })
+    }
+}
+
