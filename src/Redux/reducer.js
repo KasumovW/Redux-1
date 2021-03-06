@@ -3,7 +3,7 @@ const iState = {
     loading: false,
 
     users: [],
-    usersLoading: false
+    usersLoading: false,
 }
 const reduser = (state = iState, action) => {
     switch (action.type) {
@@ -65,19 +65,18 @@ const reduser = (state = iState, action) => {
                 })
             }
 
-        case "user/load/start":
+        case "users/load/start":
             return {
                 ...state,
-                usersLoading: true
+                usersLoading: false
+
             }
 
-        case "user/load/success":
+        case "users/load/success":
             return {
                 ...state,
-                usersLoading: false,
                 users: action.payload
             }
-
 
         default:
             return state;

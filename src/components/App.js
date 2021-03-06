@@ -2,18 +2,20 @@ import Header from "./Header";
 import Main from "./Main";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {addData} from "../Redux/actions";
+import {addData, loadUsers} from "../Redux/actions";
 import HeaderA from "./HeaderA";
 import MainA from "./MainA";
+import Homework from "./Homework";
 
 function App() {
     const loading = useSelector((state) => state.loading);
-    const usersLoading = useSelector((state) => state.usersLoading);
+    const uLoading = useSelector((state) => state.usersLoading);
     const dispatch = useDispatch();
 
 
     useEffect(() => {
         dispatch(addData())
+        dispatch(loadUsers())
     }, [])
 
 
@@ -29,6 +31,7 @@ function App() {
                 <>
                     <Header />
                     <Main />
+                    <Homework />
                 </>
             )}
         </div>

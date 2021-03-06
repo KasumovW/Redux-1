@@ -49,18 +49,17 @@ export const dataCheck = (id, completed) => {
     }
 }
 
-export const userData = () => {
+export const loadUsers = () => {
     return function (dispatch) {
-        dispatch({type: "user/load/start"})
+        dispatch({type: "users/load/start"});
 
         fetch("https://jsonplaceholder.typicode.com/users")
-            .then((response) => response.json())
+            .then((response) => response.json)
             .then((json) => {
                 dispatch({
-                    type: "user/load/success",
+                    type: "users/load/success",
                     payload: json
                 })
             })
     }
 }
-

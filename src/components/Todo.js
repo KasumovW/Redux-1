@@ -25,7 +25,7 @@ function Todo(props) {
                             </div>
                         </div>
                         <div className="col-9 text">
-                            {props.item.title}
+                            {props.item.title} ({props.item.userId})
                         </div>
                         <div className="col-2">
                             <button
