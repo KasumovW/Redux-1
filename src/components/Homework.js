@@ -64,10 +64,13 @@ console.log(element);
 
 const element2 = elements.find((item) => {
     if (item.a === item.b) {
-        console.log(item.a + item.b)
+        return true
+    } else {
+        return false
     }
 });
 
+console.log(element2.a + element2.b);
 
 function Homework(props) {
 
