@@ -2,7 +2,7 @@ import Header from "./Header";
 import Main from "./Main";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {addData, loadUsers} from "../Redux/actions";
+import {addData, loadUsers} from "../redux/actions";
 import HeaderA from "./HeaderA";
 import MainA from "./MainA";
 import Homework from "./Homework";
@@ -22,7 +22,7 @@ function App() {
     return (
         <div className="acc">
         <div className='container obsh'>
-            {loading ? (
+            {(loading || uLoading) ? (
                 <>
                     <HeaderA />
                     <MainA />

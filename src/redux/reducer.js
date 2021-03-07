@@ -1,11 +1,11 @@
-const iState = {
+const initialState = {
     data: [],
     loading: false,
 
     users: [],
     usersLoading: false,
 }
-const reduser = (state = iState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "app/loading/start":
             return {
@@ -20,6 +20,7 @@ const reduser = (state = iState, action) => {
 
         case "todo/deleting/start":
             return {
+                ...state,
                 data: state.data.map((item) => {
                     if (item.id === action.payload) {
                         return{
@@ -32,6 +33,7 @@ const reduser = (state = iState, action) => {
 
         case "todo/deleting/success":
             return {
+                ...state,
                 data: state.data.filter((item) => {
                     return item.id !== action.payload;
                 })
@@ -53,6 +55,7 @@ const reduser = (state = iState, action) => {
 
         case  "todo/check/success":
             return {
+                ...state,
                 data: state.data.map((item) => {
                     if (item.id === action.payload) {
                         return {
@@ -83,4 +86,4 @@ const reduser = (state = iState, action) => {
     }
 };
 
-export default reduser;
+export default reducer;
