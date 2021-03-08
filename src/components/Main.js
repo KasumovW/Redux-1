@@ -5,7 +5,6 @@ import Todo from "./Todo";
 
 function Main(props) {
     const data = useSelector((state) => state.data);
-    const users = useSelector((state) => state.users);
     const dispatch = useDispatch();
 
     const dataDeleted = (id) => {
@@ -21,8 +20,7 @@ function Main(props) {
             {data.map((item) => {
                 return (
                     <Todo
-                        item={data}
-                        users={users}
+                        item={item}
                         dataDeleted={dataDeleted}
                         dataChecking={dataChecking}
                     />

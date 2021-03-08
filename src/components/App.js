@@ -9,7 +9,6 @@ import Homework from "./Homework";
 
 function App() {
     const loading = useSelector((state) => state.loading);
-    const uLoading = useSelector((state) => state.usersLoading);
     const dispatch = useDispatch();
 
 
@@ -22,7 +21,7 @@ function App() {
     return (
         <div className="acc">
         <div className='container obsh'>
-            {(loading || uLoading) ? (
+            {loading ? (
                 <>
                     <HeaderA />
                     <MainA />

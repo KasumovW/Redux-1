@@ -1,22 +1,21 @@
 import React from 'react';
 
 function Todo(props) {
-    const user = props.users.find((item) => item.id === props.data.userId);
     return (
         <div>
             <div className="row">
                 <div className="col-11 m-auto mt-2 mb-3 todo">
                     <div className="row">
                         <div className="col-1 check d-flex">
-                            {props.data.checking ? (
+                            {props.item.checking ? (
                                 <div className="tire">
 
                                 </div>
                             ) : (
                                 <input
                                     type="checkbox"
-                                    checked={props.data.completed}
-                                    onChange={() => props.dataChecking(props.data.id)}
+                                    checked={props.item.completed}
+                                    onChange={() => props.dataChecking(props.item.id)}
                                 />
                             )}
 
@@ -25,12 +24,12 @@ function Todo(props) {
                             </div>
                         </div>
                         <div className="col-9 text">
-                            {props.data.title} ({user.email})
+                            {props.item.title}
                         </div>
                         <div className="col-2">
                             <button
-                                onClick={() => props.dataDeleted(props.data.id)}
-                                disabled={props.data.deleting}
+                                onClick={() => props.dataDeleted(props.item.id)}
+                                disabled={props.item.deleting}
                             >Удалить</button>
                         </div>
                     </div>
