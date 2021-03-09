@@ -15,7 +15,9 @@ const reducer = (state = initialState, action) => {
 
         case "app/loading/success":
             return  {
-                data: action.payload
+                ...state,
+                data: action.payload,
+                loading: false
             }
 
         case "todo/deleting/start":
@@ -71,14 +73,15 @@ const reducer = (state = initialState, action) => {
         case "users/load/start":
             return {
                 ...state,
-                usersLoading: false
+                usersLoading: true
 
             }
 
         case "users/load/success":
             return {
                 ...state,
-                users: action.payload
+                users: action.payload,
+                usersLoading: false
             }
 
         default:

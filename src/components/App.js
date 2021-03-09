@@ -1,27 +1,26 @@
 import Header from "./Header";
-import Main from "./Main";
+import Todos from "./Todos";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {addData, loadUsers} from "../redux/actions";
 import HeaderA from "./HeaderA";
 import MainA from "./MainA";
 import Homework from "./Homework";
+import {useEffect} from "react";
+import {addData, loadUsers} from "../redux/actions";
 
 function App() {
     const loading = useSelector((state) => state.loading);
+    const uLoading = useSelector((state) => state.usersLoading);
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         dispatch(addData())
         dispatch(loadUsers())
     }, [])
 
-
     return (
         <div className="acc">
         <div className='container obsh'>
-            {loading ? (
+            {(loading || uLoading) ? (
                 <>
                     <HeaderA />
                     <MainA />
@@ -29,7 +28,7 @@ function App() {
             ) : (
                 <>
                     <Header />
-                    <Main />
+                    <Todos />
                     <Homework />
                 </>
             )}
