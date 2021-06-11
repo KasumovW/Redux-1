@@ -1,92 +1,92 @@
 const initialState = {
-    data: [],
-    loading: false,
+  data: [],
+  loading: false,
 
-    users: [],
-    usersLoading: false,
-}
+  users: [],
+  usersLoading: false,
+};
 const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "app/loading/start":
+  switch (action.type) {
+    case "app/loading/start":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "app/loading/success":
+      return {
+        ...state,
+        data: action.payload,
+        loading: false,
+      };
+
+    case "todo/deleting/start":
+      return {
+        ...state,
+        data: state.data.map((item) => {
+          if (item.id === action.payload) {
             return {
-                ...state,
-                loading: true
-            }
+              ...item,
+              deleting: true,
+            };
+          }
+          return item;
+        }),
+      };
 
-        case "app/loading/success":
-            return  {
-                ...state,
-                data: action.payload,
-                loading: false
-            }
+    case "todo/deleting/success":
+      return {
+        ...state,
+        data: state.data.filter((item) => {
+          return item.id !== action.payload;
+        }),
+      };
 
-        case "todo/deleting/start":
+    case "todo/check/start":
+      return {
+        ...state,
+        data: state.data.map((item) => {
+          if (item.id === action.payload) {
             return {
-                ...state,
-                data: state.data.map((item) => {
-                    if (item.id === action.payload) {
-                        return{
-                            ...item,
-                            deleting: true
-                        }
-                    } return item
-                })
-            }
+              ...item,
+              checking: true,
+            };
+          }
+          return item;
+        }),
+      };
 
-        case "todo/deleting/success":
+    case "todo/check/success":
+      return {
+        ...state,
+        data: state.data.map((item) => {
+          if (item.id === action.payload) {
             return {
-                ...state,
-                data: state.data.filter((item) => {
-                    return item.id !== action.payload;
-                })
-            }
+              ...item,
+              completed: !item.completed,
+              checking: false,
+            };
+          }
+          return item;
+        }),
+      };
 
-        case "todo/check/start":
-            return {
-                ...state,
-                data: state.data.map((item) => {
-                    if (item.id === action.payload) {
-                        return {
-                            ...item,
-                            checking: true
-                        }
-                    } return item
+    case "users/load/start":
+      return {
+        ...state,
+        usersLoading: true,
+      };
 
-                })
-            }
+    case "users/load/success":
+      return {
+        ...state,
+        users: action.payload,
+        usersLoading: false,
+      };
 
-        case  "todo/check/success":
-            return {
-                ...state,
-                data: state.data.map((item) => {
-                    if (item.id === action.payload) {
-                        return {
-                            ...item,
-                            completed: !item.completed,
-                            checking: false
-                        }
-                    } return item;
-
-                })
-            }
-
-        case "users/load/start":
-            return {
-                ...state,
-                usersLoading: true
-
-            }
-
-        case "users/load/success":
-            return {
-                ...state,
-                users: action.payload,
-                usersLoading: false
-            }
-
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default reducer;
