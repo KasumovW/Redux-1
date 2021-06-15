@@ -1,6 +1,6 @@
 ## Данный проект - это список дел.
 
-###Демо версия -<a href="https://react-todo-list-4.herokuapp.com" target="_blank"> проекта</a>
+### Демо версия -<a href="https://react-todo-list-4.herokuapp.com" target="_blank"> проекта</a>
 * * *
 ### Задачи которые он выполняет:
 + Получение данных с сервера
@@ -29,14 +29,24 @@
 
 * * *
 
-### Запуск прокта:
+### Для запуска проекта вам необходимо : 
+
+1. Клонировать проект на ваше устройство командой:
+```javascript
+git clone https://github.com/KasumovW/leave-a-to-do-list.git
+```
+
+2. Указать путь к проекту:
+```javascript
+cd react-chat
+```
+
+3. Затем устоновить зависимости проекта:
 ```javascript
 npm install
 ```
 
-#### Следом: 
+4. Запустить:
 ```javascript
 npm start
 ```
-
-* * *
