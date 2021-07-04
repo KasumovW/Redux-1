@@ -38,7 +38,7 @@ git clone https://github.com/KasumovW/leave-a-to-do-list.git
 
 2. Указать путь к проекту:
 ```javascript
-cd react-chat
+cd leave-a-to-do-list
 ```
 
 3. Затем устоновить зависимости проекта:
